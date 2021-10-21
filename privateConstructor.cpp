@@ -1,17 +1,20 @@
-#include <iostream>
+ï»¿#include <iostream>
 using namespace std;
 
-// Ë½ÓĞ¹¹Ôìº¯Êı
+/*
+ * ç§æœ‰æ„é€ å‡½æ•°è°ƒç”¨demo
+ */
+
 class prvtCnstr {
 private:
 	int val;
-	prvtCnstr() :val(0) {} // Ä¬ÈÏ¹¹Ôìº¯Êı
-	prvtCnstr(int i) :val(i) {} // ÖØÔØ¹¹Ôìº¯Êı
+	prvtCnstr() :val(0) {} // é»˜è®¤æ„é€ å‡½æ•°
+	prvtCnstr(int i) :val(i) {} // é‡è½½æ„é€ å‡½æ•°
 public:
 	static prvtCnstr* getObject_default() { return new prvtCnstr; }
 	static prvtCnstr* getObject_Prtr() { return new prvtCnstr(1); }
 	static prvtCnstr getObject() {
-		prvtCnstr s(2); // ÀàÄÚ²¿²Å¿É´´½¨¶ÔÏó
+		prvtCnstr s(2); // ç±»å†…éƒ¨æ‰å¯åˆ›å»ºå¯¹è±¡
 		return s;
 	}
 
@@ -24,7 +27,7 @@ public:
 };
 
 int main(int argc, char* argv[]) {
-	// ´´½¨¹¹Ôìº¯ÊıÎªË½ÓĞÊ±µÄÀà¶ÔÏó
+	// åˆ›å»ºæ„é€ å‡½æ•°ä¸ºç§æœ‰æ—¶çš„ç±»å¯¹è±¡
 	prvtCnstr* ptr1 = prvtCnstr::getObject_default();
 	prvtCnstr* ptr2 = prvtCnstr::getObject_Prtr();
 	prvtCnstr pC = prvtCnstr::getObject();
@@ -32,7 +35,7 @@ int main(int argc, char* argv[]) {
 	cout << ptr2->getVal() << endl;
 	cout << pC.getVal() << endl;
 
-	// Á½ÖÖÊÍ·Å¶¯Ì¬ÄÚ´æµÄ·½Ê½
+	// ä¸¤ç§é‡Šæ”¾åŠ¨æ€å†…å­˜çš„æ–¹å¼
 	ptr1->destroy();
 	ptr2->destroy();
 	//delete ptr1;
