@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 #include <vector>
 #include <string>
 #include <time.h>
@@ -8,16 +8,17 @@ using std::cout;
 using std::endl;
 using std::string;
 
+// 快速排序
 class Solution {
 public:
-	void sort(vector<int>& nums) {
+	void quickSort(vector<int>& nums) {
 		if (nums.empty())
 			return;
 
-		quickSort(nums, 0, nums.size() - 1);
+		recursion(nums, 0, nums.size() - 1);
 	}
 private:
-	void quickSort(vector<int>& nums, int lf, int rt) {
+	void recursion(vector<int>& nums, int lf, int rt) {
 		if (lf >= rt)
 			return;
 
@@ -38,8 +39,8 @@ private:
 		}
 		nums[lf] = pivot;
 
-		quickSort(nums, min, lf - 1);
-		quickSort(nums, lf + 1, max);
+		recursion(nums, min, lf - 1);
+		recursion(nums, lf + 1, max);
 	}
 };
 
@@ -47,7 +48,7 @@ int main(int argc, char* argv[]) {
 	Solution sol;
 
 	vector<int> vi{ 5,4,3,2,1 };
-	sol.sort(vi);
+	sol.quickSort(vi);
 	for (int v : vi) {
 		cout << v << ' ';
 	}

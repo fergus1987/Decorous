@@ -3,7 +3,7 @@
 using std::cout;
 using std::endl;
 
-// 双指针的应用
+// 二级指针的应用
 class Solution {
 public:
 	bool isNumeric(const char* str) {
