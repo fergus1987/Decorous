@@ -7,13 +7,12 @@ using std::string;
 
 // 同数组两元素地址相减的测试
 int main(int argc, char* argv[]) {
-
 	//以下两种写法结果一致
 	string* st = new string[2]{ "Tang","Cong" };
 	//string st[2]{ "Tang","Cong" };
 
 	/* 若写成 p1 = st 将无法成功编译 原因分析：
-	 * p1 = st 时 p1 是 string[] 指针 而 p2 是 string 指针 故两者不能直接进行加减运算
+	 * p1 = st 时p1是string[]指针 而p2是string指针 故两者不能如23行所示直接进行加减运算
 	 */
 	string* p1 = st + 0, *p2 = st + 1;
 
