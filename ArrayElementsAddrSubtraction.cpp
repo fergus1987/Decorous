@@ -5,7 +5,7 @@ using std::cout;
 using std::endl;
 using std::string;
 
-// 同数组两元素地址相减的测试
+// 数组两元素地址相减 → 获取两元素的数组距离而非地址距离
 int main(int argc, char* argv[]) {
 	//以下两种写法结果一致
 	string* st = new string[2]{ "Tang","Cong" };
@@ -22,6 +22,7 @@ int main(int argc, char* argv[]) {
 	cout << p2 << endl; // 打印 上述内存地址 + 4字节 同 cout << st + 1 << endl;
 	cout << p2 - p1 << endl; // 打印 1
 	cout << &st[1] - &st[0] << endl; // 打印 1
+	cout << (void*)& st[1] - (void*)& st[0] << endl; // 打印两元素地址距离，p2 - p1 同理
 
 	return 0;
 }

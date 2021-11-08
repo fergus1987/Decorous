@@ -44,7 +44,7 @@ public:
 	}
 
 	// 自底向上
-	/*ListNode* mergeSort(ListNode* head) {
+	ListNode* mergeSort(ListNode* head) {
 		if (!head)
 			return nullptr;
 
@@ -85,7 +85,7 @@ public:
 		}
 
 		return dummyHead.next;
-	}*/
+	}
 private:
 	ListNode* merge(ListNode* head1, ListNode* head2) {
 		ListNode dummyHead, * tmp = &dummyHead;
