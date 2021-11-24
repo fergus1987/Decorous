@@ -7,45 +7,41 @@ using std::cout;
 using std::endl;
 using std::string;
 
+// 回溯
 class Solution {
 public:
 	vector<int> printNumbers(int n) {
-		if (n <= 0)
-			return vector<int>();
+		if (n == 0)
+			return rst;
 
-		recursion(n, 0);
-
+		backtrack(n, 1);
 		return rst;
 	}
 private:
 	vector<int> rst;
 	string stNum;
 
-	void recursion(int n, int pos) {
-		if (pos == n) {
-			pushBack();
+	void backtrack(int n, int pos) {
+		if (pos > n) {
+			if (stoi(stNum) != 0)
+				rst.push_back(stoi(stNum));
 			return;
 		}
 
 		for (int i = 0; i <= 9; ++i) {
-			stNum[pos] = i + '0';
-			recursion(n, pos + 1);
+			stNum.push_back(i + '0');
+			backtrack(n, pos + 1);
+			stNum.pop_back();
 		}
-	}
-
-	void pushBack() {
-		int temp = std::stoi(stNum);
-		if (temp != 0)
-			rst.push_back(temp));
 	}
 };
 
 int main(int argc, char* argv[]) {
 	Solution sol;
 
-	vector<int> v = sol.printNumbers(3);
-	for (int i : v) {
-		cout << i << endl;
+	vector<int> vi = sol.printNumbers(3);
+	for (int v : vi) {
+		cout << v << endl;
 	}
 
 	return 0;

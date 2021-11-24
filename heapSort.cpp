@@ -14,27 +14,14 @@ public:
 
 		int sz = vi.size();
 		for (int i = (sz - 2) / 2; i >= 0; --i) { // 建堆
-			maxHeapify(vi, i, sz);
+			maxHeapify(vi, i, sz); // 升序
+			//minHeapify(vi, i, sz); // 降序
 		}
 
 		for (int i = sz - 1; i > 0; --i) {
 			std::swap(vi[0], vi[i]);
-			maxHeapify(vi, 0, i);
-		}
-	}
-
-	void heapSortDesc(vector<int>& vi) { // 降序
-		if (vi.empty())
-			return;
-
-		int sz = vi.size();
-		for (int i = (sz - 2) / 2; i >= 0; --i) {
-			minHeapify(vi, i, sz);
-		}
-
-		for (int i = sz - 1; i > 0; --i) { // 建堆
-			std::swap(vi[0], vi[i]);
-			minHeapify(vi, 0, i);
+			maxHeapify(vi, 0, i); // 升序
+			//minHeapify(vi, 0, i); // 降序
 		}
 	}
 private:
