@@ -8,18 +8,16 @@ using std::string;
 
 // basic_string::c_str()的应用
 int main(int argc, char* argv[]) {
-	Solution sol;
-
 	string s = "tang";
 	char ch[10];
-	// c_str()返回const char*，故不能用char*接收
-	const char* conCh = s.c_str();
-	strcpy(ch, s.c_str());
+	const char* conCh = s.c_str(); // 注意 c_str() 返回 const char*
+	strcpy(ch, s.c_str()); // strcpy() 参2 也为 const char*
 
 	cout << &s << endl;
+
 	// 强转为字符串首地址，否则将打印以该地址为起始的字符串
-	cout << (void*)conCh << endl; // 指向s的首地址
-	cout << (int*)ch << endl;
+	cout << (void*)conCh << endl; // 指向s首地址
+	cout << (int*)ch << endl; // 指向ch首地址
 
 	s[1] = 'o';
 	cout << s << endl;

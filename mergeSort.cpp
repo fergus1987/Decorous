@@ -37,10 +37,10 @@ public:
 		}
 
 		/*ListNode* mid = slow;
-		ListNode* lf = recursion(head, mid), * rt = recursion(mid, tail);*/
+		ListNode* head1 = recursion(head, mid), * head2 = recursion(mid, tail);*/
 
-		ListNode* lf = recursion(head, slow), * rt = recursion(slow, tail);
-		return merge(lf, rt);
+		ListNode* head1 = recursion(head, slow), * head2 = recursion(slow, tail);
+		return merge(head1, head2);
 	}
 
 	// 自底向上
@@ -100,10 +100,11 @@ private:
 			}
 			tmp = tmp->next;
 		}
-		if (head1)
+		/*if (head1)
 			tmp->next = head1;
 		else if (head2)
-			tmp->next = head2;
+			tmp->next = head2;*/
+		tmp->next = head1 != nullptr ? head1 : head2;
 
 		return dummyHead.next;
 	}
@@ -111,6 +112,8 @@ private:
 
 int main(int argc, char* argv[]) {
 	Solution sol;
+
+
 
 	return 0;
 }

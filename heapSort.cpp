@@ -18,49 +18,54 @@ public:
 			//minHeapify(vi, i, sz); // 降序
 		}
 
-		for (int i = sz - 1; i > 0; --i) {
-			std::swap(vi[0], vi[i]);
+		for (int i = sz - 1; i >= 1; --i) {
+			std::swap(vi[i], vi[0]);
 			maxHeapify(vi, 0, i); // 升序
 			//minHeapify(vi, 0, i); // 降序
 		}
 	}
 private:
-	void maxHeapify(vector<int>& vi, int begin, int sz) { // 大顶堆
-		int temp = vi[begin], sub = begin * 2 + 1;
+	void maxHeapify(vector<int>& vi, int parent, int sz) { // 大顶堆
+		if (sz == 1) // 针对heapSortAcs函数中第二个for循环 i==1 时
+			return;
 
-		while (sub < sz) {
-			if (sub + 1 < sz)
-				sub = vi[sub] > vi[sub + 1] ? sub : sub + 1;
+		int pivot = vi[parent];
+		int child = parent * 2 + 1;
 
-			if (vi[sub] > temp) {
-				vi[begin] = vi[sub];
-				begin = sub;
-				sub = sub * 2 + 1;
+		while (child < sz) {
+			if (child + 1 < sz)
+				child = vi[child + 1] > vi[child] ? child + 1 : child;
+
+			if (vi[child] > pivot) {
+				vi[parent] = vi[child];
+				parent = child;
+				child = child * 2 + 1;
 			}
 			else
 				break;
 		}
 
-		vi[begin] = temp;
+		vi[parent] = pivot;
 	}
 
-	void minHeapify(vector<int>& vi, int begin, int sz) { // 小顶堆
-		int temp = vi[begin], sub = begin * 2 + 1;
+	void minHeapify(vector<int>& vi, int parent, int sz) { // 小顶堆
+		int pivot = vi[parent];
+		int child = parent * 2 + 1;
 
-		while (sub < sz) {
-			if (sub + 1 < sz)
-				sub = vi[sub] < vi[sub + 1] ? sub : sub + 1;
+		while (child < sz) {
+			if (child + 1 < sz)
+				child = vi[child + 1] < vi[child] ? child +1  : child;
 
-			if (vi[sub] < temp) {
-				vi[begin] = vi[sub];
-				begin = sub;
-				sub = sub * 2 + 1;
+			if (vi[child] < pivot) {
+				vi[parent] = vi[child];
+				parent = child;
+				child = child * 2 + 1;
 			}
 			else
 				break;
 		}
 
-		vi[begin] = temp;
+		vi[parent] = pivot;
 	}
 };
 

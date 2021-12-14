@@ -11,18 +11,16 @@ int main(int argc, char* argv[]) {
 	string* st = new string[2]{ "Tang","Cong" };
 	//string st[2]{ "Tang","Cong" };
 
-	/* 若写成 p1 = st 将无法成功编译 原因分析：
-	 * p1 = st 时p1是string[]指针 而p2是string指针 故两者不能如23行所示直接进行加减运算
-	 */
 	string* p1 = st + 0, *p2 = st + 1;
+	// 若写为 string* p1 = st，p1类型 * string []，而p2类型 * string，不能进行随后的减法操作
 
 	cout << *p1 << endl; // 打印 Tang
 	cout << *p2 << endl; // 打印 Cong
-	cout << p1 << endl; // 打印 16进制内存地址 同 cout << st << endl;
-	cout << p2 << endl; // 打印 上述内存地址 + 4字节 同 cout << st + 1 << endl;
-	cout << p2 - p1 << endl; // 打印 1
-	cout << &st[1] - &st[0] << endl; // 打印 1
-	cout << (void*)& st[1] - (void*)& st[0] << endl; // 打印两元素地址距离，p2 - p1 同理
+	cout << p1 << endl; // 打印 16进制内存地址，同 cout << st << endl;
+	cout << p2 << endl; // 打印 上述内存地址 + 4字节，同 cout << st + 1 << endl;
+
+	cout << p2 - p1 << endl; // 打印1（数组距离），同 &st[1] - &st[0]
+	cout << (void*)p2 - (void*)p1 << endl; // 打印俩元素地址距离，同 (void*)&st[1] - (void*)&st[0]
 
 	return 0;
 }
