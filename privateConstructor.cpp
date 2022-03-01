@@ -1,13 +1,8 @@
 ﻿#include <iostream>
 using namespace std;
 
-// 调用私有构造函数
-
+// 私有构造函数类
 class prvtCnstr {
-private:
-	int val;
-	prvtCnstr() :val(0) {} // 私有默认构造函数
-	prvtCnstr(int i) :val(i) {} // 私有重载构造函数
 public: // 利用静态公有成员函数创建对象
 	static prvtCnstr* getObject_default() { return new prvtCnstr; }
 	static prvtCnstr* getObject_Prtr() { return new prvtCnstr(1); }
@@ -20,8 +15,12 @@ public: // 利用静态公有成员函数创建对象
 
 	void destroy() {
 		delete this;
-		cout << "the Object has been deleted." << endl;
+		cout << "The Object has been deleted." << endl;
 	}
+private:
+	int val;
+	prvtCnstr() :val(0) {} // 私有默认构造函数
+	prvtCnstr(int i) :val(i) {} // 私有重载构造函数
 };
 
 int main(int argc, char* argv[]) {
